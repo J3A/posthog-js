@@ -946,9 +946,12 @@ export const _info = {
         if (!document.referrer) {
             return '$direct'
         }
-        const parser = document.createElement('a') // Unfortunately we cannot use new URL due to IE11
-        parser.href = document.referrer
-        return parser.host
+        // NOTE: IE not that important
+        // const parser = document.createElement('a') // Unfortunately we cannot use new URL due to IE11
+        // parser.href = document.referrer
+        // return parser.host
+        const url = new URL(document.referrer);
+        return url.host;
     },
 
     properties: function (): Properties {
